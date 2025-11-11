@@ -15,6 +15,17 @@
 		F0BC69A42EC3F48600A115CB /* AddressListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BC69A32EC3F39600A115CB /* AddressListView.swift */; };
 		F0BC69A52EC3F49200A115CB /* AddAddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BC69A22EC3F32600A115CB /* AddAddressView.swift */; };
 		F0BC69A62EC3F49700A115CB /* AddAddressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BC69A12EC3F2CC00A115CB /* AddAddressViewModel.swift */; };
+		F0BC69A92EC3FB6300A115CB /* PortfolioDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BC69A82EC3FB5B00A115CB /* PortfolioDetailViewModel.swift */; };
+		F0BC69AB2EC3FBB500A115CB /* PortfolioDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BC69AA2EC3FBAF00A115CB /* PortfolioDetailView.swift */; };
+		F0BC69AE2EC3FBDD00A115CB /* SimulatedStakingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BC69AD2EC3FBD700A115CB /* SimulatedStakingViewModel.swift */; };
+		F0BC69B12EC3FC0B00A115CB /* SimulatedWrapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BC69B02EC3FC0400A115CB /* SimulatedWrapViewModel.swift */; };
+		F0BC69B32EC3FC2400A115CB /* StakingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BC69B22EC3FC2000A115CB /* StakingView.swift */; };
+		F0BC69B52EC3FC3600A115CB /* WrapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BC69B42EC3FC3300A115CB /* WrapView.swift */; };
+		F0BC69B82EC3FC7200A115CB /* StakeWrapContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BC69B72EC3FC6C00A115CB /* StakeWrapContainerView.swift */; };
+		F0BC69BB2EC3FC9D00A115CB /* VaultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BC69BA2EC3FC9900A115CB /* VaultView.swift */; };
+		F0BC69BE2EC3FCD700A115CB /* DemoCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BC69BD2EC3FCD300A115CB /* DemoCardView.swift */; };
+		F0BC69C12EC3FCF000A115CB /* WalletMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BC69C02EC3FCEC00A115CB /* WalletMainView.swift */; };
+		F0BC69C42EC3FD0C00A115CB /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BC69C32EC3FD0900A115CB /* AppColors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +38,17 @@
 		F0BC69A12EC3F2CC00A115CB /* AddAddressViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAddressViewModel.swift; sourceTree = "<group>"; };
 		F0BC69A22EC3F32600A115CB /* AddAddressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAddressView.swift; sourceTree = "<group>"; };
 		F0BC69A32EC3F39600A115CB /* AddressListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressListView.swift; sourceTree = "<group>"; };
+		F0BC69A82EC3FB5B00A115CB /* PortfolioDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioDetailViewModel.swift; sourceTree = "<group>"; };
+		F0BC69AA2EC3FBAF00A115CB /* PortfolioDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioDetailView.swift; sourceTree = "<group>"; };
+		F0BC69AD2EC3FBD700A115CB /* SimulatedStakingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulatedStakingViewModel.swift; sourceTree = "<group>"; };
+		F0BC69B02EC3FC0400A115CB /* SimulatedWrapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulatedWrapViewModel.swift; sourceTree = "<group>"; };
+		F0BC69B22EC3FC2000A115CB /* StakingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StakingView.swift; sourceTree = "<group>"; };
+		F0BC69B42EC3FC3300A115CB /* WrapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrapView.swift; sourceTree = "<group>"; };
+		F0BC69B72EC3FC6C00A115CB /* StakeWrapContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StakeWrapContainerView.swift; sourceTree = "<group>"; };
+		F0BC69BA2EC3FC9900A115CB /* VaultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VaultView.swift; sourceTree = "<group>"; };
+		F0BC69BD2EC3FCD300A115CB /* DemoCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoCardView.swift; sourceTree = "<group>"; };
+		F0BC69C02EC3FCEC00A115CB /* WalletMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletMainView.swift; sourceTree = "<group>"; };
+		F0BC69C32EC3FD0900A115CB /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -82,6 +104,7 @@
 		F0BC698B2EC3EE8500A115CB /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				F0BC69C22EC3FD0200A115CB /* Theme */,
 				F0BC699B2EC3F22300A115CB /* Utils */,
 				F0BC698D2EC3EEB200A115CB /* Networking */,
 				F0BC698C2EC3EEA500A115CB /* Data */,
@@ -142,6 +165,13 @@
 		F0BC699C2EC3F24300A115CB /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				F0BC69BF2EC3FCE700A115CB /* WalletMain */,
+				F0BC69BC2EC3FCCB00A115CB /* Card */,
+				F0BC69B92EC3FC8F00A115CB /* Vault */,
+				F0BC69B62EC3FC6200A115CB /* StakeWrap */,
+				F0BC69AF2EC3FBFA00A115CB /* Wrap */,
+				F0BC69AC2EC3FBCF00A115CB /* Staking */,
+				F0BC69A72EC3FB5000A115CB /* Portfolio */,
 				F0BC699E2EC3F26000A115CB /* WalletList */,
 				F0BC699D2EC3F25A00A115CB /* AddWallet */,
 			);
@@ -163,6 +193,73 @@
 				F0BC69A32EC3F39600A115CB /* AddressListView.swift */,
 			);
 			path = WalletList;
+			sourceTree = "<group>";
+		};
+		F0BC69A72EC3FB5000A115CB /* Portfolio */ = {
+			isa = PBXGroup;
+			children = (
+				F0BC69AA2EC3FBAF00A115CB /* PortfolioDetailView.swift */,
+				F0BC69A82EC3FB5B00A115CB /* PortfolioDetailViewModel.swift */,
+			);
+			path = Portfolio;
+			sourceTree = "<group>";
+		};
+		F0BC69AC2EC3FBCF00A115CB /* Staking */ = {
+			isa = PBXGroup;
+			children = (
+				F0BC69B22EC3FC2000A115CB /* StakingView.swift */,
+				F0BC69AD2EC3FBD700A115CB /* SimulatedStakingViewModel.swift */,
+			);
+			path = Staking;
+			sourceTree = "<group>";
+		};
+		F0BC69AF2EC3FBFA00A115CB /* Wrap */ = {
+			isa = PBXGroup;
+			children = (
+				F0BC69B42EC3FC3300A115CB /* WrapView.swift */,
+				F0BC69B02EC3FC0400A115CB /* SimulatedWrapViewModel.swift */,
+			);
+			path = Wrap;
+			sourceTree = "<group>";
+		};
+		F0BC69B62EC3FC6200A115CB /* StakeWrap */ = {
+			isa = PBXGroup;
+			children = (
+				F0BC69B72EC3FC6C00A115CB /* StakeWrapContainerView.swift */,
+			);
+			path = StakeWrap;
+			sourceTree = "<group>";
+		};
+		F0BC69B92EC3FC8F00A115CB /* Vault */ = {
+			isa = PBXGroup;
+			children = (
+				F0BC69BA2EC3FC9900A115CB /* VaultView.swift */,
+			);
+			path = Vault;
+			sourceTree = "<group>";
+		};
+		F0BC69BC2EC3FCCB00A115CB /* Card */ = {
+			isa = PBXGroup;
+			children = (
+				F0BC69BD2EC3FCD300A115CB /* DemoCardView.swift */,
+			);
+			path = Card;
+			sourceTree = "<group>";
+		};
+		F0BC69BF2EC3FCE700A115CB /* WalletMain */ = {
+			isa = PBXGroup;
+			children = (
+				F0BC69C02EC3FCEC00A115CB /* WalletMainView.swift */,
+			);
+			path = WalletMain;
+			sourceTree = "<group>";
+		};
+		F0BC69C22EC3FD0200A115CB /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				F0BC69C32EC3FD0900A115CB /* AppColors.swift */,
+			);
+			path = Theme;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -239,14 +336,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0BC69A92EC3FB6300A115CB /* PortfolioDetailViewModel.swift in Sources */,
+				F0BC69B12EC3FC0B00A115CB /* SimulatedWrapViewModel.swift in Sources */,
 				F0BC69A02EC3F29600A115CB /* Formatters.swift in Sources */,
+				F0BC69B52EC3FC3600A115CB /* WrapView.swift in Sources */,
 				F0BC69A52EC3F49200A115CB /* AddAddressView.swift in Sources */,
+				F0BC69B32EC3FC2400A115CB /* StakingView.swift in Sources */,
+				F0BC69B82EC3FC7200A115CB /* StakeWrapContainerView.swift in Sources */,
 				F0BC699A2EC3F17400A115CB /* CoinGeckoService.swift in Sources */,
 				F0BC69A42EC3F48600A115CB /* AddressListView.swift in Sources */,
+				F0BC69AB2EC3FBB500A115CB /* PortfolioDetailView.swift in Sources */,
+				F0BC69BE2EC3FCD700A115CB /* DemoCardView.swift in Sources */,
 				F0BC69A62EC3F49700A115CB /* AddAddressViewModel.swift in Sources */,
+				F0BC69C42EC3FD0C00A115CB /* AppColors.swift in Sources */,
 				F0BC69932EC3EF7800A115CB /* NetworkModels.swift in Sources */,
 				F0BC69912EC3EF5200A115CB /* WalletAddress.swift in Sources */,
+				F0BC69BB2EC3FC9D00A115CB /* VaultView.swift in Sources */,
+				F0BC69C12EC3FCF000A115CB /* WalletMainView.swift in Sources */,
 				F0BC69982EC3F11D00A115CB /* EtherscanService.swift in Sources */,
+				F0BC69AE2EC3FBDD00A115CB /* SimulatedStakingViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

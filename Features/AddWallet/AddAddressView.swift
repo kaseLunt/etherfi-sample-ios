@@ -2,45 +2,29 @@
 //  AddAddressView.swift
 //  EtherFiTracker
 //
-//  Created by Kase Lunt on 11/11/25.
-//
 
 import SwiftUI
 import SwiftData
 
 struct AddAddressView: View {
-    
     @Environment(\.modelContext) private var modelContext
-    
     @Environment(\.dismiss) private var dismiss
     
+    // ViewModel is created and owned by the View
     @State private var viewModel: AddAddressViewModel
     
-    init(etherscanService: EtherscanServiceProtocol) {
-        _viewModel = State(
-            initialValue: AddAddressViewModel(
-                etherscanService: etherscanService,
-                modelContext:
-                   try! ModelContainer(for: WalletAddress.self).mainContext
-            )
+    // Designated initializer for production use
+    init(etherscanService: EtherscanServiceProtocol, modelContext: ModelContext) {
+        let vm = AddAddressViewModel(
+            etherscanService: etherscanService,
+            modelContext: modelContext
         )
-    }
-    
-    init(preview: Bool = false) {
-        let container = try! ModelContainer(for: WalletAddress.self, inMemory: true)
-        _viewModel = State(
-            initialValue: AddAddressViewModel(
-                etherscanService: EtherscanService(),
-                modelContext: container.mainContext
-            )
-        )
+        _viewModel = State(initialValue: vm)
     }
 
     var body: some View {
         Form {
             Section("Wallet Details") {
-                // This is the equivalent of OutlinedTextField
-                // $viewModel.nickname binds the text field to the VM property
                 TextField("Nickname (e.g., My Main Wallet)", text: $viewModel.nickname)
                 TextField("Ethereum Address (0x...)", text: $viewModel.address)
                     .autocapitalization(.none)
@@ -59,11 +43,9 @@ struct AddAddressView: View {
                             .frame(maxWidth: .infinity)
                     }
                 }
-                // Disable button if loading or fields are empty
                 .disabled(viewModel.isLoading || viewModel.nickname.isEmpty || viewModel.address.isEmpty)
             }
             
-            // Show error message if one exists
             if let errorMessage = viewModel.errorMessage {
                 Section {
                     Text(errorMessage)
@@ -74,14 +56,23 @@ struct AddAddressView: View {
         .navigationTitle("Add Wallet")
         .onChange(of: viewModel.isSaveSuccess) {
             if viewModel.isSaveSuccess {
-                dismiss() // Pop back to the previous screen
+                dismiss()
             }
         }
     }
 }
 
 #Preview {
-    NavigationStack {
-        AddAddressView(preview: true)
+    let container = try! ModelContainer(
+        for: WalletAddress.self,
+        configurations: ModelConfiguration(isStoredInMemoryOnly: true)
+    )
+    
+    return NavigationStack {
+        AddAddressView(
+            etherscanService: EtherscanService(),
+            modelContext: container.mainContext
+        )
     }
+    .modelContainer(container)
 }

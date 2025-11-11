@@ -6,13 +6,45 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		F0BC69912EC3EF5200A115CB /* WalletAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BC69902EC3EF5200A115CB /* WalletAddress.swift */; };
+		F0BC69932EC3EF7800A115CB /* NetworkModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BC69922EC3EF7800A115CB /* NetworkModels.swift */; };
+		F0BC69982EC3F11D00A115CB /* EtherscanService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BC69972EC3F11600A115CB /* EtherscanService.swift */; };
+		F0BC699A2EC3F17400A115CB /* CoinGeckoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BC69992EC3F16E00A115CB /* CoinGeckoService.swift */; };
+		F0BC69A02EC3F29600A115CB /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BC699F2EC3F29300A115CB /* Formatters.swift */; };
+		F0BC69A42EC3F48600A115CB /* AddressListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BC69A32EC3F39600A115CB /* AddressListView.swift */; };
+		F0BC69A52EC3F49200A115CB /* AddAddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BC69A22EC3F32600A115CB /* AddAddressView.swift */; };
+		F0BC69A62EC3F49700A115CB /* AddAddressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BC69A12EC3F2CC00A115CB /* AddAddressViewModel.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		F0BC697B2EC3EE7300A115CB /* EtherFiTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EtherFiTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F0BC69902EC3EF5200A115CB /* WalletAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletAddress.swift; sourceTree = "<group>"; };
+		F0BC69922EC3EF7800A115CB /* NetworkModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkModels.swift; sourceTree = "<group>"; };
+		F0BC69972EC3F11600A115CB /* EtherscanService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EtherscanService.swift; sourceTree = "<group>"; };
+		F0BC69992EC3F16E00A115CB /* CoinGeckoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinGeckoService.swift; sourceTree = "<group>"; };
+		F0BC699F2EC3F29300A115CB /* Formatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatters.swift; sourceTree = "<group>"; };
+		F0BC69A12EC3F2CC00A115CB /* AddAddressViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAddressViewModel.swift; sourceTree = "<group>"; };
+		F0BC69A22EC3F32600A115CB /* AddAddressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAddressView.swift; sourceTree = "<group>"; };
+		F0BC69A32EC3F39600A115CB /* AddressListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		F0BC69962EC3F0FB00A115CB /* Exceptions for "EtherFiTracker" folder in "EtherFiTracker" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = F0BC697A2EC3EE7300A115CB /* EtherFiTracker */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		F0BC697D2EC3EE7300A115CB /* EtherFiTracker */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				F0BC69962EC3F0FB00A115CB /* Exceptions for "EtherFiTracker" folder in "EtherFiTracker" target */,
+			);
 			path = EtherFiTracker;
 			sourceTree = "<group>";
 		};
@@ -32,8 +64,10 @@
 		F0BC69722EC3EE7300A115CB = {
 			isa = PBXGroup;
 			children = (
+				F0BC699C2EC3F24300A115CB /* Features */,
 				F0BC697D2EC3EE7300A115CB /* EtherFiTracker */,
 				F0BC697C2EC3EE7300A115CB /* Products */,
+				F0BC698B2EC3EE8500A115CB /* Core */,
 			);
 			sourceTree = "<group>";
 		};
@@ -43,6 +77,92 @@
 				F0BC697B2EC3EE7300A115CB /* EtherFiTracker.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		F0BC698B2EC3EE8500A115CB /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				F0BC699B2EC3F22300A115CB /* Utils */,
+				F0BC698D2EC3EEB200A115CB /* Networking */,
+				F0BC698C2EC3EEA500A115CB /* Data */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		F0BC698C2EC3EEA500A115CB /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				F0BC698E2EC3EEC100A115CB /* Models */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		F0BC698D2EC3EEB200A115CB /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				F0BC69942EC3F05200A115CB /* Services */,
+				F0BC698F2EC3EEC800A115CB /* Models */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		F0BC698E2EC3EEC100A115CB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F0BC69902EC3EF5200A115CB /* WalletAddress.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F0BC698F2EC3EEC800A115CB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F0BC69922EC3EF7800A115CB /* NetworkModels.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F0BC69942EC3F05200A115CB /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				F0BC69992EC3F16E00A115CB /* CoinGeckoService.swift */,
+				F0BC69972EC3F11600A115CB /* EtherscanService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		F0BC699B2EC3F22300A115CB /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				F0BC699F2EC3F29300A115CB /* Formatters.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		F0BC699C2EC3F24300A115CB /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				F0BC699E2EC3F26000A115CB /* WalletList */,
+				F0BC699D2EC3F25A00A115CB /* AddWallet */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		F0BC699D2EC3F25A00A115CB /* AddWallet */ = {
+			isa = PBXGroup;
+			children = (
+				F0BC69A22EC3F32600A115CB /* AddAddressView.swift */,
+				F0BC69A12EC3F2CC00A115CB /* AddAddressViewModel.swift */,
+			);
+			path = AddWallet;
+			sourceTree = "<group>";
+		};
+		F0BC699E2EC3F26000A115CB /* WalletList */ = {
+			isa = PBXGroup;
+			children = (
+				F0BC69A32EC3F39600A115CB /* AddressListView.swift */,
+			);
+			path = WalletList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -119,6 +239,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0BC69A02EC3F29600A115CB /* Formatters.swift in Sources */,
+				F0BC69A52EC3F49200A115CB /* AddAddressView.swift in Sources */,
+				F0BC699A2EC3F17400A115CB /* CoinGeckoService.swift in Sources */,
+				F0BC69A42EC3F48600A115CB /* AddressListView.swift in Sources */,
+				F0BC69A62EC3F49700A115CB /* AddAddressViewModel.swift in Sources */,
+				F0BC69932EC3EF7800A115CB /* NetworkModels.swift in Sources */,
+				F0BC69912EC3EF5200A115CB /* WalletAddress.swift in Sources */,
+				F0BC69982EC3F11D00A115CB /* EtherscanService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,6 +381,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = EtherFiTracker/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -284,6 +413,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = EtherFiTracker/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

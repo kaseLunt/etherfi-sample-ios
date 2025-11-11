@@ -10,23 +10,27 @@ import SwiftData
 
 @main
 struct EtherFiTrackerApp: App {
-    var sharedModelContainer: ModelContainer = {
-        let schema = Schema([
-            Item.self,
-        ])
-        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
-
+    
+    let modelContainer: ModelContainer
+    
+    init() {
         do {
-            return try ModelContainer(for: schema, configurations: [modelConfiguration])
+            modelContainer = try ModelContainer(for: WalletAddress.self)
         } catch {
-            fatalError("Could not create ModelContainer: \(error)")
+            fatalError("Could not initialize ModelContainer: \(error)")
         }
-    }()
+    }
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            // We wrap our starting view in a NavigationStack
+            // This enables navigation (like the NavHost)
+            NavigationStack {
+                AddressListView()
+            }
         }
-        .modelContainer(sharedModelContainer)
+        // This injects the database into the entire app.
+        // Any view can now access it.
+        .modelContainer(modelContainer)
     }
 }

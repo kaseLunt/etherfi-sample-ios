@@ -12,10 +12,6 @@ A native iOS application for tracking Ether.fi portfolio balances, built with mo
 |:--------------------------------------:|:------------------------------------:|:--------------------------------------------:|
 | ![Stake Screen](Screenshots/stake.png) | ![Wrap Screen](Screenshots/wrap.png) | ![Demo Card View](Screenshots/card_view.png) |
 
-|              Stake & Wrap (Animation)              |
-|:--------------------------------------------------:|
-| ![Stake and Wrap Demo](Screenshots/stake_wrap.gif) |
-
 ## ✨ Features
 
 * **Multi-Wallet Tracking:** Add and save multiple Ethereum wallets with custom nicknames.
@@ -156,10 +152,9 @@ Future work would include:
 * This is a **demo application** created to showcase Swift/SwiftUI development skills.
 * The staking and wrapping interfaces are **simulated** and do not perform real blockchain transactions.
 * The app uses real APIs (Etherscan and CoinGecko) to fetch actual balance and price data.
-* All token icons are custom-drawn using SwiftUI's drawing APIs to match Ether.fi's brand design.
 
 ## 📄 License
 
-This project is for demonstration purposes. Please refer to the repository for license information.
+This project is for demonstration purposes.
 
 ---

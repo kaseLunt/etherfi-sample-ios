@@ -6,15 +6,15 @@ A native iOS application for tracking Ether.fi portfolio balances, built with mo
 
 |                  My Wallets (List)                  |                    Add Wallet                    |                   Portfolio Detail                    |
 |:---------------------------------------------------:|:------------------------------------------------:|:-----------------------------------------------------:|
-| ![Wallet List Screen](screenshots/wallets_list.png) | ![Add Wallet Screen](screenshots/add_wallet.png) | ![Portfolio Detail Screen](screenshots/portfolio.png) |
+| ![Wallet List Screen](Screenshots/wallets_list.png) | ![Add Wallet Screen](Screenshots/add_wallet.png) | ![Portfolio Detail Screen](Screenshots/portfolio.png) |
 
 |                Stake UI                |               Wrap UI                |                  Demo Card                   |
 |:--------------------------------------:|:------------------------------------:|:--------------------------------------------:|
-| ![Stake Screen](screenshots/stake.png) | ![Wrap Screen](screenshots/wrap.png) | ![Demo Card View](screenshots/card_view.png) |
+| ![Stake Screen](Screenshots/stake.png) | ![Wrap Screen](Screenshots/wrap.png) | ![Demo Card View](Screenshots/card_view.png) |
 
 |              Stake & Wrap (Animation)              |
 |:--------------------------------------------------:|
-| ![Stake and Wrap Demo](screenshots/stake_wrap.gif) |
+| ![Stake and Wrap Demo](Screenshots/stake_wrap.gif) |
 
 ## ✨ Features
 

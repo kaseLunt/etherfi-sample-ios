@@ -28,6 +28,7 @@
 		F0BC69C42EC3FD0C00A115CB /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BC69C32EC3FD0900A115CB /* AppColors.swift */; };
 		F0BC69C72EC3FFEE00A115CB /* SwapComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BC69C62EC3FFE500A115CB /* SwapComponents.swift */; };
 		F0BC69CC2EC405BB00A115CB /* TokenIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BC69CB2EC405B600A115CB /* TokenIcons.swift */; };
+		F0BC69CE2EC40DB200A115CB /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = F0BC69CD2EC40DAE00A115CB /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +54,7 @@
 		F0BC69C32EC3FD0900A115CB /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
 		F0BC69C62EC3FFE500A115CB /* SwapComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwapComponents.swift; sourceTree = "<group>"; };
 		F0BC69CB2EC405B600A115CB /* TokenIcons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenIcons.swift; sourceTree = "<group>"; };
+		F0BC69CD2EC40DAE00A115CB /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -72,6 +74,11 @@
 				F0BC69962EC3F0FB00A115CB /* Exceptions for "EtherFiTracker" folder in "EtherFiTracker" target */,
 			);
 			path = EtherFiTracker;
+			sourceTree = "<group>";
+		};
+		F0BC69E22EC40F5F00A115CB /* Screenshots */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Screenshots;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -94,6 +101,8 @@
 				F0BC697D2EC3EE7300A115CB /* EtherFiTracker */,
 				F0BC697C2EC3EE7300A115CB /* Products */,
 				F0BC698B2EC3EE8500A115CB /* Core */,
+				F0BC69CD2EC40DAE00A115CB /* README.md */,
+				F0BC69E22EC40F5F00A115CB /* Screenshots */,
 			);
 			sourceTree = "<group>";
 		};
@@ -301,6 +310,7 @@
 			);
 			fileSystemSynchronizedGroups = (
 				F0BC697D2EC3EE7300A115CB /* EtherFiTracker */,
+				F0BC69E22EC40F5F00A115CB /* Screenshots */,
 			);
 			name = EtherFiTracker;
 			packageProductDependencies = (
@@ -348,6 +358,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0BC69CE2EC40DB200A115CB /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

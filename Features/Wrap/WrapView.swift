@@ -23,106 +23,124 @@ struct WrapView: View {
     
     var body: some View {
         ScrollView {
-            VStack(spacing: 20) {
+            VStack(spacing: SwapSpacing.medium) {
                 // Header
-                Text(isWrapping ? "Wrap eETH" : "Unwrap weETH")
-                    .font(.title2)
-                    .bold()
+                WrapHeader()
+                Spacer().frame(height: SwapSpacing.small)
                 
                 // Input Section
-                VStack(alignment: .leading, spacing: 8) {
-                    Text(isWrapping ? "From: eETH" : "From: weETH")
-                        .font(.subheadline)
-                        .foregroundStyle(.secondary)
-                    
-                    HStack {
-                        TextField("0.0", text: $amount)
-                            .keyboardType(.decimalPad)
-                            .font(.title)
-                        
-                        Button("MAX") {
-                            amount = String(format: "%.4f", isWrapping ? viewModel.eethBalance : viewModel.weethBalance)
-                        }
-                        .buttonStyle(.bordered)
+                Text(isWrapping ? "Wrap" : "Unwrap")
+                    .font(.system(size: 14, weight: .semibold))
+                    .foregroundColor(.textLavender)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                
+                TokenInputBox(
+                    value: $amount,
+                    tokenSymbol: isWrapping ? "eETH" : "weETH",
+                    balance: isWrapping ? viewModel.eethBalance : viewModel.weethBalance,
+                    price: isWrapping ? viewModel.eethPrice : viewModel.weethPrice,
+                    isLoading: viewModel.isLoading,
+                    onMaxClick: {
+                        amount = formatToMaxDigits(isWrapping ? viewModel.eethBalance : viewModel.weethBalance)
                     }
-                    
-                    HStack {
-                        Text(usdValue, format: .currency(code: "USD"))
-                            .font(.subheadline)
-                            .foregroundStyle(.secondary)
-                        
-                        Spacer()
-                        
-                        Text("Balance: \(isWrapping ? viewModel.eethBalance : viewModel.weethBalance, specifier: "%.4f")")
-                            .font(.subheadline)
-                            .foregroundStyle(.secondary)
-                    }
-                }
-                .padding()
-                .background(Color(.systemGray6))
-                .cornerRadius(12)
+                )
                 
                 // Swap Direction Button
-                Button(action: { isWrapping.toggle() }) {
-                    Image(systemName: "arrow.up.arrow.down")
-                        .font(.title2)
+                SwapIconButton {
+                    isWrapping.toggle()
                 }
-                .buttonStyle(.bordered)
                 
                 // Output Section
-                VStack(alignment: .leading, spacing: 8) {
-                    Text(isWrapping ? "To: weETH" : "To: eETH")
-                        .font(.subheadline)
-                        .foregroundStyle(.secondary)
-                    
-                    Text(amount.isEmpty ? "0.0" : amount)
-                        .font(.title)
-                    
-                    Text("1:1 exchange rate")
-                        .font(.subheadline)
-                        .foregroundStyle(.secondary)
-                }
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding()
-                .background(Color(.systemGray6))
-                .cornerRadius(12)
+                Text("Receive")
+                    .font(.system(size: 14, weight: .semibold))
+                    .foregroundColor(.textLavender)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                
+                TokenDisplayBox(
+                    value: amount,
+                    tokenSymbol: isWrapping ? "weETH" : "eETH",
+                    balance: isWrapping ? viewModel.weethBalance : viewModel.eethBalance,
+                    price: isWrapping ? viewModel.weethPrice : viewModel.eethPrice
+                )
+                
+                // Exchange Rate
+                ExchangeRateRow(isWrapping: isWrapping)
                 
                 // Action Button
-                Button(action: {}) {
-                    Text(isWrapping ? "Wrap" : "Unwrap")
-                        .font(.headline)
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                        .background(isValidAmount ? Color.blue : Color.gray)
-                        .foregroundStyle(.white)
-                        .cornerRadius(12)
-                }
-                .disabled(!isValidAmount)
+                ActionButton(
+                    text: isValidAmount(amount, maxBalance: isWrapping ? viewModel.eethBalance : viewModel.weethBalance) ?
+                        (isWrapping ? "Wrap" : "Unwrap") : "Enter an amount",
+                    isEnabled: isValidAmount(amount, maxBalance: isWrapping ? viewModel.eethBalance : viewModel.weethBalance),
+                    action: {}
+                )
+                
+                Spacer().frame(height: SwapSpacing.medium)
                 
                 // Disclaimer
-                Text("⚠️ This is a demo screen showing real balances.\nNo actual wrapping will occur.")
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
-                    .multilineTextAlignment(.center)
-                    .padding()
+                DisclaimerCard(text: "⚠️ This is a demo screen showing real balances.\nNo actual wrapping will occur.")
+                
+                if let errorMessage = viewModel.errorMessage {
+                    Text(errorMessage)
+                        .font(.system(size: 14))
+                        .foregroundColor(.red)
+                        .padding(.top, SwapSpacing.small)
+                }
             }
-            .padding()
+            .padding(SwapSpacing.medium)
         }
+        .background(Color.appBackground)
         .task {
             await viewModel.loadBalances()
         }
     }
-    
-    private var usdValue: Double {
-        let numericAmount = Double(amount) ?? 0
-        let price = isWrapping ? viewModel.eethPrice : viewModel.weethPrice
-        return numericAmount * price
+}
+
+// MARK: - Wrap Header
+private struct WrapHeader: View {
+    var body: some View {
+        HStack(spacing: 0) {
+            Text("Wrap on ")
+                .font(.system(size: 16))
+                .foregroundColor(.purpleArrow)
+            
+            EthereumChainIcon(size: 36)
+                .padding(.horizontal, 4)
+            
+            Text("Ethereum")
+                .font(.system(size: 16))
+                .foregroundColor(.textLavender)
+        }
+        .frame(maxWidth: .infinity)
+        .padding(SwapSpacing.small)
+        .background(
+            RoundedRectangle(cornerRadius: 12)
+                .fill(Color.cardBackground)
+        )
+        .overlay(
+            RoundedRectangle(cornerRadius: 12)
+                .stroke(
+                    LinearGradient.primaryGradient,
+                    lineWidth: 0.5
+                )
+        )
     }
+}
+
+// MARK: - Exchange Rate Row
+private struct ExchangeRateRow: View {
+    let isWrapping: Bool
     
-    private var isValidAmount: Bool {
-        guard let numericAmount = Double(amount), numericAmount > 0 else { return false }
-        let maxBalance = isWrapping ? viewModel.eethBalance : viewModel.weethBalance
-        return numericAmount <= maxBalance
+    var body: some View {
+        HStack {
+            Text("Exchange Rate")
+                .font(.system(size: 14))
+                .foregroundColor(.textLavender.opacity(0.6))
+            
+            Text(isWrapping ? "1 eETH = 1.0 weETH" : "1 weETH = 1.0 eETH")
+                .font(.system(size: 14, weight: .medium))
+                .foregroundColor(.textLavender)
+        }
+        .padding(.horizontal, 4)
     }
 }
 

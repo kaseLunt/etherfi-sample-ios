@@ -12,7 +12,6 @@ struct EtherFiTrackerApp: App {
     
     init() {
         do {
-            // Initialize SwiftData container for WalletAddress persistence
             modelContainer = try ModelContainer(for: WalletAddress.self)
         } catch {
             fatalError("Could not initialize ModelContainer: \(error)")
@@ -24,6 +23,7 @@ struct EtherFiTrackerApp: App {
             NavigationStack {
                 AddressListView()
             }
+            .preferredColorScheme(.dark)
         }
         .modelContainer(modelContainer)
     }

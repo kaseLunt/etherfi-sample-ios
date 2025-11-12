@@ -12,37 +12,40 @@ struct WalletMainView: View {
     @State private var selectedTab = 0
     
     var body: some View {
-        TabView(selection: $selectedTab) {
-            // Card Tab
-            DemoCardView()
-                .tabItem {
-                    Label("Card", systemImage: "creditcard")
-                }
-                .tag(0)
+        ZStack {
+            Color.appBackground
+                .ignoresSafeArea()
             
-            // Stake/Wrap Tab
-            StakeWrapContainerView(address: address)
-                .tabItem {
-                    Label("Stake / Wrap", systemImage: "arrow.2.squarepath")
-                }
-                .tag(1)
-            
-            // Portfolio Tab
-            PortfolioDetailView(address: address)
-                .tabItem {
-                    Label("Portfolio", systemImage: "chart.pie")
-                }
-                .tag(2)
-            
-            // Vault Tab
-            VaultView(address: address)
-                .tabItem {
-                    Label("Vault", systemImage: "lock.shield")
-                }
-                .tag(3)
+            TabView(selection: $selectedTab) {
+                DemoCardView()
+                    .tabItem {
+                        Label("Card", systemImage: "creditcard")
+                    }
+                    .tag(0)
+                
+                StakeWrapContainerView(address: address)
+                    .tabItem {
+                        Label("Stake / Wrap", systemImage: "arrow.2.squarepath")
+                    }
+                    .tag(1)
+                
+                PortfolioDetailView(address: address)
+                    .tabItem {
+                        Label("Portfolio", systemImage: "chart.pie")
+                    }
+                    .tag(2)
+                
+                VaultView(address: address)
+                    .tabItem {
+                        Label("Vault", systemImage: "lock.shield")
+                    }
+                    .tag(3)
+            }
+            .accentColor(.etherFiGold)
         }
         .navigationTitle(nickname)
         .navigationBarTitleDisplayMode(.inline)
+        .toolbarBackground(Color.appBackground, for: .navigationBar)
     }
 }
 

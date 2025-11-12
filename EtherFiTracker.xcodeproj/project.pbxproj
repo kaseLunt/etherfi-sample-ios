@@ -26,6 +26,8 @@
 		F0BC69BE2EC3FCD700A115CB /* DemoCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BC69BD2EC3FCD300A115CB /* DemoCardView.swift */; };
 		F0BC69C12EC3FCF000A115CB /* WalletMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BC69C02EC3FCEC00A115CB /* WalletMainView.swift */; };
 		F0BC69C42EC3FD0C00A115CB /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BC69C32EC3FD0900A115CB /* AppColors.swift */; };
+		F0BC69C72EC3FFEE00A115CB /* SwapComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BC69C62EC3FFE500A115CB /* SwapComponents.swift */; };
+		F0BC69CC2EC405BB00A115CB /* TokenIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BC69CB2EC405B600A115CB /* TokenIcons.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +51,8 @@
 		F0BC69BD2EC3FCD300A115CB /* DemoCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoCardView.swift; sourceTree = "<group>"; };
 		F0BC69C02EC3FCEC00A115CB /* WalletMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletMainView.swift; sourceTree = "<group>"; };
 		F0BC69C32EC3FD0900A115CB /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
+		F0BC69C62EC3FFE500A115CB /* SwapComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwapComponents.swift; sourceTree = "<group>"; };
+		F0BC69CB2EC405B600A115CB /* TokenIcons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenIcons.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -104,6 +108,7 @@
 		F0BC698B2EC3EE8500A115CB /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				F0BC69CA2EC405AD00A115CB /* Components */,
 				F0BC69C22EC3FD0200A115CB /* Theme */,
 				F0BC699B2EC3F22300A115CB /* Utils */,
 				F0BC698D2EC3EEB200A115CB /* Networking */,
@@ -165,6 +170,7 @@
 		F0BC699C2EC3F24300A115CB /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				F0BC69C52EC3FFDA00A115CB /* Shared */,
 				F0BC69BF2EC3FCE700A115CB /* WalletMain */,
 				F0BC69BC2EC3FCCB00A115CB /* Card */,
 				F0BC69B92EC3FC8F00A115CB /* Vault */,
@@ -262,6 +268,22 @@
 			path = Theme;
 			sourceTree = "<group>";
 		};
+		F0BC69C52EC3FFDA00A115CB /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				F0BC69C62EC3FFE500A115CB /* SwapComponents.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		F0BC69CA2EC405AD00A115CB /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				F0BC69CB2EC405B600A115CB /* TokenIcons.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -342,6 +364,8 @@
 				F0BC69B52EC3FC3600A115CB /* WrapView.swift in Sources */,
 				F0BC69A52EC3F49200A115CB /* AddAddressView.swift in Sources */,
 				F0BC69B32EC3FC2400A115CB /* StakingView.swift in Sources */,
+				F0BC69CC2EC405BB00A115CB /* TokenIcons.swift in Sources */,
+				F0BC69C72EC3FFEE00A115CB /* SwapComponents.swift in Sources */,
 				F0BC69B82EC3FC7200A115CB /* StakeWrapContainerView.swift in Sources */,
 				F0BC699A2EC3F17400A115CB /* CoinGeckoService.swift in Sources */,
 				F0BC69A42EC3F48600A115CB /* AddressListView.swift in Sources */,

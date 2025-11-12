@@ -11,46 +11,80 @@ struct AddressListView: View {
     @Environment(\.modelContext) private var modelContext
 
     var body: some View {
-        List {
-            ForEach(wallets) { wallet in
-                // Navigate to WalletMainView with the wallet details
-                NavigationLink(destination: WalletMainView(
-                    address: wallet.address,
-                    nickname: wallet.nickname
-                )) {
-                    VStack(alignment: .leading, spacing: 4) {
-                        Text(wallet.nickname)
-                            .font(.headline)
-                        Text(wallet.address)
-                            .font(.subheadline)
-                            .foregroundColor(.secondary)
-                            .lineLimit(1)
-                            .truncationMode(.middle)
+        ZStack {
+            Color.appBackground
+                .ignoresSafeArea()
+            
+            List {
+                ForEach(wallets) { wallet in
+                    NavigationLink(destination: WalletMainView(
+                        address: wallet.address,
+                        nickname: wallet.nickname
+                    )) {
+                        WalletRow(wallet: wallet)
                     }
-                    .padding(.vertical, 8)
+                    .listRowBackground(Color.cardBackground)
+                    .listRowSeparator(.hidden)
+                }
+            }
+            .listStyle(.plain)
+            .scrollContentBackground(.hidden)
+            .navigationTitle("My Wallets")
+            .toolbarBackground(Color.appBackground, for: .navigationBar)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    NavigationLink(destination: AddAddressView(
+                        etherscanService: EtherscanService(),
+                        modelContext: modelContext
+                    )) {
+                        Image(systemName: "plus")
+                            .foregroundColor(.etherFiGold)
+                    }
+                }
+            }
+            .overlay {
+                if wallets.isEmpty {
+                    emptyState
                 }
             }
         }
-        .navigationTitle("My Wallets")
-        .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                NavigationLink(destination: AddAddressView(
-                    etherscanService: EtherscanService(),
-                    modelContext: modelContext
-                )) {
-                    Image(systemName: "plus")
-                }
-            }
+    }
+    
+    private var emptyState: some View {
+        VStack(spacing: 16) {
+            Text("📱")
+                .font(.system(size: 80))
+            
+            Text("No wallets saved")
+                .font(.system(size: 24, weight: .bold))
+                .foregroundColor(.textLavender)
+            
+            Text("Tap the '+' button to add your first wallet!")
+                .font(.system(size: 14))
+                .foregroundColor(.textLavender.opacity(0.7))
+                .multilineTextAlignment(.center)
         }
-        .overlay {
-            if wallets.isEmpty {
-                ContentUnavailableView {
-                    Label("No Wallets Saved", systemImage: "wallet.pass")
-                } description: {
-                    Text("Tap the + button to add your first wallet.")
-                }
-            }
+        .padding(32)
+    }
+}
+
+// MARK: - Wallet Row
+private struct WalletRow: View {
+    let wallet: WalletAddress
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 4) {
+            Text(wallet.nickname)
+                .font(.system(size: 16, weight: .bold))
+                .foregroundColor(.textLavender)
+            
+            Text(wallet.address)
+                .font(.system(size: 14))
+                .foregroundColor(.textLavender.opacity(0.7))
+                .lineLimit(1)
+                .truncationMode(.middle)
         }
+        .padding(.vertical, 8)
     }
 }
 

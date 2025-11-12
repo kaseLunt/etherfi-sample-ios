@@ -20,29 +20,18 @@ struct PortfolioDetailView: View {
     }
     
     var body: some View {
-        Group {
-            if viewModel.isLoading {
-                VStack {
-                    ProgressView()
-                    Text("Loading portfolio...")
-                        .foregroundStyle(.secondary)
-                        .padding(.top)
+        ZStack {
+            Color.appBackground
+                .ignoresSafeArea()
+            
+            Group {
+                if viewModel.isLoading {
+                    loadingView
+                } else if let errorMessage = viewModel.errorMessage {
+                    errorView(errorMessage)
+                } else {
+                    portfolioContent
                 }
-            } else if let errorMessage = viewModel.errorMessage {
-                VStack(spacing: 16) {
-                    Image(systemName: "exclamationmark.triangle")
-                        .font(.largeTitle)
-                        .foregroundStyle(.red)
-                    Text("Error")
-                        .font(.title2)
-                        .bold()
-                    Text(errorMessage)
-                        .foregroundStyle(.secondary)
-                        .multilineTextAlignment(.center)
-                }
-                .padding()
-            } else {
-                portfolioContent
             }
         }
         .task {
@@ -50,27 +39,61 @@ struct PortfolioDetailView: View {
         }
     }
     
+    private var loadingView: some View {
+        VStack(spacing: 16) {
+            ProgressView()
+                .scaleEffect(1.5)
+            Text("Loading portfolio...")
+                .font(.system(size: 14))
+                .foregroundColor(.textLavender.opacity(0.7))
+        }
+    }
+    
+    private func errorView(_ message: String) -> some View {
+        VStack(spacing: 16) {
+            Image(systemName: "exclamationmark.triangle")
+                .font(.system(size: 60))
+                .foregroundColor(.red)
+            Text("Error")
+                .font(.system(size: 24, weight: .bold))
+                .foregroundColor(.textLavender)
+            Text(message)
+                .font(.system(size: 14))
+                .foregroundColor(.textLavender.opacity(0.7))
+                .multilineTextAlignment(.center)
+                .padding(.horizontal)
+        }
+    }
+    
     private var portfolioContent: some View {
-        List {
-            // Total Value Section
-            Section {
+        ScrollView {
+            VStack(spacing: 8) {
+                // Header Section - Address
+                AddressHeaderCard(address: address)
+                    .padding(.horizontal)
+                    .padding(.top)
+                
+                // Total Value Section
+                TotalValueCard(totalValue: totalValue)
+                    .padding(.horizontal)
+                
+                // Holdings Header
+                Text("Holdings")
+                    .font(.system(size: 16, weight: .bold))
+                    .foregroundColor(.textLavender)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.horizontal)
+                    .padding(.vertical, 8)
+                
+                // Token List
                 VStack(spacing: 8) {
-                    Text("Total Portfolio Value")
-                        .font(.subheadline)
-                        .foregroundStyle(.secondary)
-                    
-                    Text(totalValue, format: .currency(code: "USD"))
-                        .font(.system(size: 36, weight: .bold))
+                    ForEach(viewModel.portfolioState, id: \.symbol) { token in
+                        TokenCard(token: token)
+                            .padding(.horizontal)
+                    }
                 }
-                .frame(maxWidth: .infinity)
-                .padding(.vertical, 8)
-            }
-            
-            // Holdings Section
-            Section("Holdings") {
-                ForEach(viewModel.portfolioState, id: \.symbol) { token in
-                    TokenRow(token: token)
-                }
+                
+                Spacer().frame(height: 16)
             }
         }
     }
@@ -80,27 +103,86 @@ struct PortfolioDetailView: View {
     }
 }
 
-// Token row component
-private struct TokenRow: View {
+// MARK: - Address Header Card
+private struct AddressHeaderCard: View {
+    let address: String
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 4) {
+            Text("Wallet Address")
+                .font(.system(size: 12, weight: .medium))
+                .foregroundColor(.textLavender)
+            
+            Text(address)
+                .font(.system(size: 14, weight: .medium))
+                .foregroundColor(.textLavender)
+                .lineLimit(1)
+                .truncationMode(.middle)
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding()
+        .background(
+            RoundedRectangle(cornerRadius: 12)
+                .fill(Color.cardBackground)
+        )
+    }
+}
+
+// MARK: - Total Value Card
+private struct TotalValueCard: View {
+    let totalValue: Double
+    
+    var body: some View {
+        VStack(spacing: 8) {
+            Text("Total Portfolio Value")
+                .font(.system(size: 14, weight: .semibold))
+                .foregroundColor(.textLavender)
+            
+            Text(totalValue, format: .currency(code: "USD"))
+                .font(.system(size: 36, weight: .bold))
+                .foregroundColor(.textLavender)
+        }
+        .frame(maxWidth: .infinity)
+        .padding()
+        .background(
+            RoundedRectangle(cornerRadius: 12)
+                .fill(Color.cardBackgroundLight)
+        )
+    }
+}
+
+// MARK: - Token Card
+private struct TokenCard: View {
     let token: TokenBalanceUiState
     
     var body: some View {
-        HStack {
+        HStack(spacing: 12) {
+            // Token Icon
+            TokenIcon(symbol: token.symbol, size: 40)
+            
+            // Token Info
             VStack(alignment: .leading, spacing: 4) {
                 Text(token.name)
-                    .font(.headline)
+                    .font(.system(size: 16, weight: .bold))
+                    .foregroundColor(.textLavender)
+                
                 Text("\(token.balance, specifier: "%.4f") \(token.symbol)")
-                    .font(.subheadline)
-                    .foregroundStyle(.secondary)
+                    .font(.system(size: 14))
+                    .foregroundColor(.textLavender.opacity(0.7))
             }
             
             Spacer()
             
+            // USD Value
             Text(token.usdValue, format: .currency(code: "USD"))
-                .font(.title3)
-                .bold()
+                .font(.system(size: 20, weight: .bold))
+                .foregroundColor(.textAccent)
         }
-        .padding(.vertical, 4)
+        .padding()
+        .background(
+            RoundedRectangle(cornerRadius: 12)
+                .fill(Color.cardBackground)
+        )
     }
 }
 

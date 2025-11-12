@@ -8,47 +8,16 @@ import SwiftUI
 struct DemoCardView: View {
     var body: some View {
         ScrollView {
-            VStack(spacing: 24) {
-                // Hero Section
-                VStack(spacing: 16) {
-                    Image(systemName: "creditcard.fill")
-                        .font(.system(size: 80))
-                        .foregroundStyle(
-                            LinearGradient(
-                                colors: [.blue, .purple],
-                                startPoint: .topLeading,
-                                endPoint: .bottomTrailing
-                            )
-                        )
-                    
-                    Text("Your DeFi-native credit card is finally here")
-                        .font(.title)
-                        .bold()
-                        .multilineTextAlignment(.center)
-                    
-                    Text("The non-custodial, cashback credit card you've been waiting for.")
-                        .font(.subheadline)
-                        .foregroundStyle(.secondary)
-                        .multilineTextAlignment(.center)
-                    
-                    Button(action: {}) {
-                        Text("Get the Card")
-                            .font(.headline)
-                            .frame(maxWidth: .infinity)
-                            .padding()
-                            .background(Color.blue)
-                            .foregroundStyle(.white)
-                            .cornerRadius(12)
-                    }
-                    .padding(.horizontal)
-                }
-                .padding(.top, 32)
+            VStack(spacing: 16) {
+                // Header Section
+                CardHeaderSection()
                 
                 Divider()
+                    .background(Color.cardScreenDivider)
                     .padding(.vertical)
                 
-                // Features
-                VStack(spacing: 20) {
+                // Feature Cards
+                VStack(spacing: 16) {
                     FeatureCard(
                         title: "Use Your Crypto",
                         description: "Use your ether.fi crypto balance with Cash to spend with your card. Repay anytime, no monthly minimums."
@@ -60,7 +29,7 @@ struct DemoCardView: View {
                     )
                     
                     FeatureCard(
-                        title: "Load from fiat or any wallet",
+                        title: "Load your account from fiat or any non-custodial wallet",
                         description: "Use your traditional bank accounts and exchanges to send and receive assets with your ether.fi Cash account."
                     )
                     
@@ -70,7 +39,7 @@ struct DemoCardView: View {
                     )
                     
                     FeatureCard(
-                        title: "Exclusive members-only rewards",
+                        title: "Exclusive members-only rewards with Cash",
                         description: "Travel and DeFi rewards, conference passes and additional 1% Cash Back on every purchase made by your referrals."
                     )
                     
@@ -79,32 +48,60 @@ struct DemoCardView: View {
                         description: "Virtual and physical cards you can use for groceries, gas, hotels—whatever you need."
                     )
                 }
-                .padding(.horizontal)
                 
                 // Disclaimer
-                VStack(spacing: 8) {
-                    Image(systemName: "exclamationmark.triangle.fill")
-                        .foregroundStyle(.orange)
-                    
-                    Text("⚠️ This is a non-functional demo screen.")
-                        .font(.caption)
-                        .bold()
-                    
-                    Text("No actual card application will be processed.")
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
-                }
-                .padding()
-                .background(Color(.systemGray6))
-                .cornerRadius(12)
-                .padding(.horizontal)
-                .padding(.bottom, 32)
+                DisclaimerCard(text: "⚠️ This is a non-functional demo screen.\nNo actual card application will be processed.")
             }
+            .padding(16)
+        }
+        .background(Color.cardScreenBackground)
+    }
+}
+
+// MARK: - Card Header Section
+private struct CardHeaderSection: View {
+    var body: some View {
+        VStack(spacing: 16) {
+            // Card Image - Replace with actual card_gold image
+            Image(systemName: "creditcard.fill")
+                .resizable()
+                .scaledToFit()
+                .frame(height: 200)
+                .foregroundStyle(
+                    LinearGradient(
+                        colors: [.etherFiGold, .etherFiGold.opacity(0.6)],
+                        startPoint: .topLeading,
+                        endPoint: .bottomTrailing
+                    )
+                )
+            
+            // Main Headline
+            Text("Your DeFi-native credit card is finally here")
+                .font(.system(size: 28))
+                .foregroundColor(Color(hex: "C8AB7A"))
+                .multilineTextAlignment(.center)
+            
+            // Subtitle
+            Text("The non-custodial, cashback credit card you've been waiting for.")
+                .font(.system(size: 14, weight: .medium))
+                .foregroundColor(.textLavender)
+                .multilineTextAlignment(.center)
+            
+            // CTA Button
+            Button(action: {}) {
+                Text("Get the Card")
+                    .font(.system(size: 14, weight: .medium))
+                    .padding()
+            }
+            .frame(maxWidth: .infinity)
+            .background(LinearGradient.primaryGradient)
+            .foregroundColor(.white)
+            .cornerRadius(12)
         }
     }
 }
 
-// Feature Card Component
+// MARK: - Feature Card
 private struct FeatureCard: View {
     let title: String
     let description: String
@@ -112,15 +109,16 @@ private struct FeatureCard: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             Text(title)
-                .font(.headline)
+                .font(.system(size: 28))
+                .foregroundColor(Color(hex: "C8AB7A"))
             
             Text(description)
-                .font(.subheadline)
-                .foregroundStyle(.secondary)
+                .font(.system(size: 14))
+                .foregroundColor(.textLavender)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
-        .padding()
-        .background(Color(.systemGray6))
+        .padding(24)
+        .background(Color.cardScreenBackground)
         .cornerRadius(12)
     }
 }
